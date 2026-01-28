@@ -1,0 +1,131 @@
+/* App Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px 20px;
+  text-align: center;
+  background-color: var(--bg-primary);
+}
+
+.empty-state-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+
+.empty-state h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 12px 0;
+}
+
+.empty-state p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin: 0 0 24px 0;
+  max-width: 300px;
+}
+
+/* Button Styles */
+.btn-primary {
+  padding: 12px 24px;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 10;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Light Theme Overrides */
+body.light {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f5f5;
+  --bg-tertiary: #e8e8e8;
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --border: #d0d0d0;
+}
+
+body.light .empty-state,
+body.light .main-content {
+  background-color: var(--bg-primary);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 480px) {
+  .empty-state-icon {
+    font-size: 48px;
+  }
+  
+  .empty-state h2 {
+    font-size: 20px;
+  }
+  
+  .empty-state p {
+    font-size: 14px;
+  }
+}
+
+/* Touch Device Optimizations */
+@media (pointer: coarse) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve scrolling on touch devices */
+  .main-content {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Hide scrollbar for filter buttons but keep functionality */
+div[style*="overflow-x: auto"]::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animation for view transitions */
+.main-content > * {
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Focus styles for accessibility */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Selection color */
+::selection {
+  background-color: var(--accent);
+  color: white;
+}
